@@ -54,7 +54,7 @@
 
     /* ─── Hero Carousel ──────────────────── */
     .hero-wrap { width: 100%; overflow: hidden; }
-    .hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; border-radius: 24px 24px 0 0; }
+    .hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; border-radius: 0; }
     .hero-carousel { position: absolute; inset: 0; }
     .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 900ms ease; }
     .hero-slide.active { opacity: 1; }
@@ -89,12 +89,11 @@
 
     /* ─── Category tabs ───────────────────── */
     .cat-tab { display: flex; flex-direction: column; align-items: center; gap: 7px; cursor: pointer; touch-action: manipulation; border: none; background: none; padding: 0; }
-    .cat-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--red-light); transition: background var(--ease), box-shadow var(--ease); }
-    .cat-icon svg { color: var(--red); width: 24px; height: 24px; }
-    .cat-tab[aria-selected="true"] .cat-icon { background: var(--red); box-shadow: 0 4px 18px rgba(188,1,20,.35); }
-    .cat-tab[aria-selected="true"] .cat-icon svg { color: #fff; }
+    .cat-icon { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--red-light); border: 1px solid transparent; transition: background var(--ease), box-shadow var(--ease), border-color var(--ease), transform var(--ease); }
+    .cat-icon-img { width: 30px; height: 30px; object-fit: contain; display: block; }
+    .cat-tab[aria-selected="true"] .cat-icon { background: var(--red-light); border-color: rgba(188,1,20,.25); box-shadow: 0 4px 18px rgba(188,1,20,.18); transform: scale(1.04); }
     .cat-tab:not([aria-selected="true"]):hover .cat-icon { background: #f5cdd2; }
-    .cat-lbl { font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: .02em; transition: color var(--ease); }
+    .cat-lbl { font-size: 12px; font-weight: 700; color: var(--red); letter-spacing: .02em; transition: color var(--ease); }
     .cat-tab[aria-selected="true"] .cat-lbl { color: var(--red); }
 
     /* ─── Menu cards ──────────────────────── */
@@ -139,7 +138,11 @@
     .faq-body { padding: 0 22px 18px; font-size: 14px; line-height: 1.75; color: var(--muted); }
 
     /* ─── Footer ──────────────────────────── */
-    footer { background: var(--red); border-radius: 28px 28px 0 0; }
+    footer { background: var(--red); border-radius: 0; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: 1.2fr 1.1fr 1fr 1.4fr; gap: 22px; }
+    }
     .f-head { color: #fff; font-weight: 700; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
     .f-text { color: rgba(255,255,255,.85); font-size: 13px; line-height: 1.9; }
     .f-link { color: rgba(255,255,255,.85); font-size: 13px; text-decoration: none; transition: color var(--ease); }
@@ -276,25 +279,25 @@
     <div class="flex justify-center gap-8 md:gap-14 mb-12 fade-up" role="tablist" aria-label="Kategori menu">
       <button class="cat-tab" role="tab" aria-selected="true" data-cat="bestseller">
         <div class="cat-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M16 4h2a1 1 0 011 1v2a4 4 0 01-4 4H9a4 4 0 01-4-4V5a1 1 0 011-1h2M8 4V3a1 1 0 011-1h6a1 1 0 011 1v1M9 12v4m6-4v4m-7 4h8"/></svg>
+          <img src="assets/images/icons/best-seller.png" alt="Best Seller icon" class="cat-icon-img" />
         </div>
         <span class="cat-lbl">Best Seller</span>
       </button>
       <button class="cat-tab" role="tab" aria-selected="false" data-cat="deals">
         <div class="cat-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M3 7l4-4h10l4 4v10l-4 4H7l-4-4V7z"/></svg>
+          <img src="assets/images/icons/best-deals.png" alt="Best Deals icon" class="cat-icon-img" />
         </div>
         <span class="cat-lbl">Best Deals</span>
       </button>
       <button class="cat-tab" role="tab" aria-selected="false" data-cat="choice">
         <div class="cat-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          <img src="assets/images/icons/best-choice.png" alt="Best Choice icon" class="cat-icon-img" />
         </div>
         <span class="cat-lbl">Best Choice</span>
       </button>
       <button class="cat-tab" role="tab" aria-selected="false" data-cat="addon">
         <div class="cat-icon">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+          <img src="assets/images/icons/add-on.png" alt="Add On icon" class="cat-icon-img" />
         </div>
         <span class="cat-lbl">Add On</span>
       </button>
@@ -530,7 +533,8 @@
   </a>
 </div>
 
-
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════
      NIMICOO STORY
@@ -674,89 +678,129 @@
 <!-- ═══════════════════════════════════════
      WHAT OUR CUSTOMERS SAY
 ═══════════════════════════════════════ -->
-<section class="py-16 bg-white">
+<section class="py-16" style="background:var(--cream);">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-10 fade-up">
       <h2 class="font-script s-script" style="color:var(--red);">What Our Customers Say</h2>
     </div>
 
-    <div class="rv-slider fade-up">
-      <div class="rv-overflow">
-        <div class="rv-track" id="rv-track">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 fade-up">
 
-          <!-- ── Review 1 ─────────────────────────────── -->
-          <article class="rv-card review-card">
-            <div class="flex items-center gap-3" style="margin-bottom:12px;">
-              <div class="avatar" aria-hidden="true">A</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:var(--text);">ADDA0101</p>
-                <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
-              </div>
-            </div>
-            <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Mmg sedap. Dah byk kali repeat beli ayam nimicoo. Kegemaran kami sekeluarga!"</p>
-            <div class="flex gap-0.5" aria-label="5 stars out of 5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-          </article>
+      <!-- ── Review 1 ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">ADDA0101</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Mmg sedap. Dah byk kali repeat beli ayam nimicoo. Kegemaran kami sekeluarga!"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-          <!-- ── Review 2 ─────────────────────────────── -->
-          <article class="rv-card review-card">
-            <div class="flex items-center gap-3" style="margin-bottom:12px;">
-              <div class="avatar" aria-hidden="true">N</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:var(--text);">Nurul Azila Mohd Noor</p>
-                <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
-              </div>
-            </div>
-            <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Dengan bau sahaja dah tahu makanan diorg sedap. And ternyata mmg sedap! Recommended 😍"</p>
-            <div class="flex gap-0.5" aria-label="5 stars out of 5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-          </article>
+      <!-- ── Review 2 ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">N</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">Nurul Azila Mohd Noor</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Dengan bau sahaja dah tahu makanan diorg sedap. And ternyata mmg sedap! Recommended 😍"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-          <!-- ── Review 3 ─────────────────────────────── -->
-          <article class="rv-card review-card">
-            <div class="flex items-center gap-3" style="margin-bottom:12px;">
-              <div class="avatar" aria-hidden="true">T</div>
-              <div>
-                <p style="font-weight:700;font-size:14px;color:var(--text);">Titiyarni Mansur</p>
-                <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
-              </div>
-            </div>
-            <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Ayam gunting paling sedap. Takda tulang. Portion banyak. Cheese banyak. Semoga terus maju jaya!"</p>
-            <div class="flex gap-0.5" aria-label="5 stars out of 5">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
-          </article>
+      <!-- ── Review 3 ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">T</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">Titiyarni Mansur</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Ayam gunting paling sedap. Takda tulang. Portion banyak. Cheese banyak. Semoga terus maju jaya!"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-          <!-- ── To add more reviews, copy an <article class="rv-card review-card"> block above this line ── -->
+      <!-- ── Review 4 (duplicate of Review 1) ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">A</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">ADDA0101</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Mmg sedap. Dah byk kali repeat beli ayam nimicoo. Kegemaran kami sekeluarga!"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-        </div><!-- /rv-track -->
-      </div><!-- /rv-overflow -->
+      <!-- ── Review 5 (duplicate of Review 2) ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">N</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">Nurul Azila Mohd Noor</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Dengan bau sahaja dah tahu makanan diorg sedap. And ternyata mmg sedap! Recommended 😍"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-      <!-- Slider controls — auto-hidden when all cards fit on screen -->
-      <div class="rv-controls" id="rv-controls">
-        <button id="rv-prev" class="rv-arrow" aria-label="Previous review">
-          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <button id="rv-next" class="rv-arrow" aria-label="Next review">
-          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
+      <!-- ── Review 6 (duplicate of Review 3) ─────────────────────────────── -->
+      <article class="review-card">
+        <div class="flex items-center gap-3" style="margin-bottom:12px;">
+          <div class="avatar" aria-hidden="true">T</div>
+          <div>
+            <p style="font-weight:700;font-size:14px;color:var(--text);">Titiyarni Mansur</p>
+            <p style="font-size:12px;color:var(--muted);">Verified Buyer</p>
+          </div>
+        </div>
+        <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:10px;">"Ayam gunting paling sedap. Takda tulang. Portion banyak. Cheese banyak. Semoga terus maju jaya!"</p>
+        <div class="flex gap-0.5" aria-label="5 stars out of 5">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </article>
 
-    </div><!-- /rv-slider -->
+    </div>
 
     <div class="text-center mt-10">
       <a href="https://www.google.com/search?sca_esv=b0606a0ae3ff7c6b&sxsrf=ANbL-n4PbvG11LsJT5cJ1QPY-TdbYs1PqQ:1780687756043&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOVl8ztnuPxUl-nHiejo5N8zmUsxMYRu3e3CJxL905QU6Sa1CtI775Sn_TmSY1jyEsN2IirnB0H0sxKezhp3vasEf54CpVZyhhiGzLQaUckXgVT4_bA%3D%3D&q=Ayam+Gunting+Nimicoo+Reviews&sa=X&ved=2ahUKEwjmp57p6vCUAxUEUGwGHWFLN4sQ0bkNegQINxAF&biw=1536&bih=779&dpr=1.25"
@@ -819,10 +863,10 @@
      FOOTER
 ═══════════════════════════════════════ -->
 <footer id="location" role="contentinfo">
-  <div class="max-w-6xl mx-auto px-6 pt-10 pb-6">
+  <div class="max-w-6xl mx-auto px-6 pt-8 pb-5">
 
-    <!-- Main 3-col grid: Logo+Social+Contact | Hours | Location+Map -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="margin-bottom:28px;">
+    <!-- 4-col grid: Logo+Social+Contact | Hours | Location | Map -->
+    <div class="footer-grid" style="margin-bottom:22px;">
 
       <!-- Col 1: Logo + Social + Contact -->
       <div>
@@ -870,7 +914,7 @@
         </div>
       </div>
 
-      <!-- Col 3: Location + Map -->
+      <!-- Col 3: Location -->
       <div>
         <p class="f-head">Location</p>
         <address style="font-style:normal;font-size:13px;color:rgba(255,255,255,.85);line-height:1.8;margin-bottom:10px;">
@@ -879,14 +923,19 @@
           Kamunting, Perak
         </address>
         <a href="https://maps.google.com/?q=Nimicoo+Kamunting+Perak" target="_blank" rel="noopener noreferrer"
-           class="f-link" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;">
+           class="f-link" style="display:inline-flex;align-items:center;gap:6px;">
           <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           View on Google Maps
         </a>
-        <div class="map-box" style="height:180px;">
+      </div>
+
+      <!-- Col 4: Map -->
+      <div>
+        <p class="f-head">Find Us</p>
+        <div class="map-box" style="height:190px;border-radius:14px;">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.023406428869!2d100.74469607509!3d4.978459494973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31caa2c5cf1d22d9%3A0x14c4bc20af1bdee!2sKamunting%2C%2034600%20Taiping%2C%20Perak!5e0!3m2!1sen!2smy!4v1700000000000!5m2!1sen!2smy"
-            width="100%" height="180" style="border:0;display:block;" allowfullscreen="" loading="lazy"
+            width="100%" height="190" style="border:0;display:block;" allowfullscreen="" loading="lazy"
             referrerpolicy="no-referrer-when-downgrade" title="Nimicoo location map"
             aria-label="Google Maps showing Nimicoo location in Kamunting, Perak">
           </iframe>
