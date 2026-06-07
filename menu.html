@@ -94,7 +94,7 @@
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
       Kembali
     </a>
-    <a href="menu.pdf" download class="btn" style="background:var(--red);color:#fff;font-size:13px;padding:9px 20px;">
+    <a href="/fullmenu/full-menu.pdf" download class="btn" style="background:var(--red);color:#fff;font-size:13px;padding:9px 20px;">
       <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
       Download PDF
     </a>
@@ -104,7 +104,7 @@
   <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.10);min-height:80vh;">
     <iframe
       id="pdf-frame"
-      src="menu.pdf"
+      src="/fullmenu/full-menu.pdf"
       class="pdf-frame"
       style="min-height:80vh;"
       title="Nimicoo Full Menu PDF"
@@ -150,7 +150,7 @@
     fallback.style.display = 'block';
   });
   // Also check via fetch
-  fetch('menu.pdf', { method: 'HEAD' })
+  fetch('/fullmenu/full-menu.pdf', { method: 'HEAD' })
     .then(r => {
       if (!r.ok) {
         frame.style.display = 'none';
