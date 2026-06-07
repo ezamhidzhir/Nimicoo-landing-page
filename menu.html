@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Full Menu — Nimicoo Ayam Gunting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Karla:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red:        #C8102E;
+      --red-dark:   #8B0A1E;
+      --cream:      #FDF6EC;
+      --nav-h:      70px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; }
+    body { font-family: 'Karla', system-ui, sans-serif; background: var(--cream); color: #2D2D2D; overflow-x: hidden; }
+    .navbar { position: sticky; top: 0; z-index: 100; background: var(--red); height: var(--nav-h); box-shadow: 0 2px 20px rgba(0,0,0,.22); }
+    .nav-link { color: rgba(255,255,255,.88); font-weight: 600; font-size: 14px; letter-spacing: .03em; transition: color 200ms ease; text-decoration: none; }
+    .nav-link:hover { color: #fff; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Karla', sans-serif; font-weight: 700; font-size: 14px; border-radius: 100px; padding: 10px 24px; transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease; cursor: pointer; text-decoration: none; border: none; letter-spacing: .02em; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-white { background: #fff; color: var(--red); }
+    .btn-white:hover { background: #fff0f1; }
+    .btn-outline-red { background: transparent; color: var(--red); border: 2px solid var(--red); }
+    .btn-outline-red:hover { background: var(--red); color: #fff; }
+    .pdf-frame { width: 100%; border: none; border-radius: 12px; display: block; }
+    .no-pdf { display: none; background: #fff; border-radius: 12px; padding: 48px 24px; text-align: center; border: 2px dashed #e5e7eb; }
+    .hline { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform 250ms ease, opacity 250ms ease; transform-origin: center; }
+    #menu-btn[aria-expanded="true"] .hline:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #menu-btn[aria-expanded="true"] .hline:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    #menu-btn[aria-expanded="true"] .hline:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 300ms ease; background: #8B0A1E; }
+    #mobile-menu.open { max-height: 200px; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3" aria-label="Nimicoo — Laman Utama" style="text-decoration:none;">
+      <div style="width:42px;height:42px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">
+        <svg width="28" height="28" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="20" fill="#C8102E"/>
+          <circle cx="20" cy="14" r="6" fill="#fff"/>
+          <rect x="12" y="22" width="16" height="10" rx="5" fill="#fff"/>
+        </svg>
+      </div>
+      <div class="text-white leading-tight">
+        <div style="font-weight:900;font-size:16px;letter-spacing:.14em;">NIMICOO</div>
+        <div style="font-size:10px;font-weight:300;opacity:.65;letter-spacing:.06em;">AYAM ✂ GEMOK TANPA TULANG</div>
+      </div>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8" aria-label="Navigasi utama">
+      <a href="index.html#menu"     class="nav-link">Menu</a>
+      <a href="index.html#location" class="nav-link">Location</a>
+      <a href="index.html#story"    class="nav-link">Our Story</a>
+      <a href="index.html#order" class="btn btn-white" style="padding:10px 22px;font-size:13px;">Order Now</a>
+    </nav>
+
+    <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+      <span class="hline"></span>
+      <span class="hline"></span>
+      <span class="hline"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" aria-label="Navigasi mudah alih">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+      <a href="index.html#menu"     class="py-3 px-2 text-white font-semibold text-sm border-b border-white/10" style="text-decoration:none;">Menu</a>
+      <a href="index.html#location" class="py-3 px-2 text-white font-semibold text-sm border-b border-white/10" style="text-decoration:none;">Location</a>
+      <a href="index.html#story"    class="py-3 px-2 text-white font-semibold text-sm" style="text-decoration:none;">Our Story</a>
+      <a href="index.html#order"    class="btn btn-white mt-3 justify-center">Order Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HEADER -->
+<div style="background:var(--red);padding:32px 24px;text-align:center;">
+  <h1 style="font-family:'Satisfy',cursive;font-size:clamp(28px,5vw,48px);color:#fff;line-height:1.1;">Full Menu</h1>
+  <p style="color:rgba(255,255,255,.75);font-size:14px;margin-top:6px;">Semua menu Nimicoo Ayam Gunting</p>
+</div>
+
+<!-- PDF VIEWER -->
+<div class="max-w-5xl mx-auto px-4 py-10">
+
+  <!-- Download / Back buttons -->
+  <div class="flex flex-wrap gap-3 justify-between items-center mb-6">
+    <a href="index.html" class="btn btn-outline-red" style="font-size:13px;padding:9px 20px;">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      Kembali
+    </a>
+    <a href="menu.pdf" download class="btn" style="background:var(--red);color:#fff;font-size:13px;padding:9px 20px;">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Download PDF
+    </a>
+  </div>
+
+  <!-- PDF embed -->
+  <div style="background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.10);min-height:80vh;">
+    <iframe
+      id="pdf-frame"
+      src="menu.pdf"
+      class="pdf-frame"
+      style="min-height:80vh;"
+      title="Nimicoo Full Menu PDF"
+      aria-label="Menu lengkap Nimicoo dalam format PDF">
+    </iframe>
+
+    <!-- Fallback jika PDF tidak dijumpai -->
+    <div id="pdf-fallback" class="no-pdf">
+      <svg width="56" height="56" fill="none" stroke="#C8102E" stroke-width="1.5" viewBox="0 0 24 24" style="margin:0 auto 16px;" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+      <p style="font-weight:700;font-size:16px;color:#1A1A1A;margin-bottom:8px;">PDF Menu Belum Tersedia</p>
+      <p style="font-size:13px;color:#6B6B6B;line-height:1.7;max-width:340px;margin:0 auto 20px;">
+        Sila letakkan fail <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;">menu.pdf</code>
+        di dalam folder <code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;">public/</code> untuk memaparkan menu di sini.
+      </p>
+      <a href="index.html#order" class="btn" style="background:var(--red);color:#fff;">Order Sekarang</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer bar -->
+<div style="background:var(--red-dark,#8B0A1E);padding:16px 24px;text-align:center;font-size:12px;color:rgba(255,255,255,.4);">
+  Copyright @Nimicoo Trading &nbsp;|&nbsp; 2025
+</div>
+
+<script>
+  // Hamburger
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  // Show fallback if PDF fails to load
+  const frame = document.getElementById('pdf-frame');
+  const fallback = document.getElementById('pdf-fallback');
+  frame.addEventListener('error', () => {
+    frame.style.display = 'none';
+    fallback.style.display = 'block';
+  });
+  // Also check via fetch
+  fetch('menu.pdf', { method: 'HEAD' })
+    .then(r => {
+      if (!r.ok) {
+        frame.style.display = 'none';
+        fallback.style.display = 'block';
+      }
+    })
+    .catch(() => {
+      frame.style.display = 'none';
+      fallback.style.display = 'block';
+    });
+</script>
+</body>
+</html>
